@@ -1,0 +1,34 @@
+services:
+
+  api:
+    build: ./api
+    ports:
+      - "5000:5000"
+
+  proxy:
+    build: ./proxy
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    volumes:
+      - ./data:/data
+
+  collector:
+    image: python:3.11-slim
+    volumes:
+        - ./collector:/app
+        - ./data:/data
+    working_dir: /app
+    command: python normalize.py
+
+  dashboard:
+    image: python:3.11-slim
+    volumes:
+      - ./dashboard:/app
+      - ./data:/app/data
+    working_dir: /app
+    ports:
+      - "8501:8501"
+    command: >
+      sh -c "pip install streamlit pandas && streamlit run app.py --server.address 0.0.0.0"
+
