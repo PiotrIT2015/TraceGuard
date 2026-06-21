@@ -5,7 +5,7 @@
 * [Running](#running)
 * [Technologies](#technologies)
 
-#General info
+# General info
 It is a lightweight, Docker-based mini SOC (Security Operations Center) for learning and experimenting with network traffic monitoring, MITM analysis, and basic threat detection.
 It simulates a real-world security pipeline by collecting HTTP traffic, normalizing events, detecting anomalies, and visualizing security alerts in a simple dashboard.
 The project is designed for educational purposes and helps demonstrate how security monitoring systems, proxies, and alert pipelines work together in modern observability and SOC environments.
